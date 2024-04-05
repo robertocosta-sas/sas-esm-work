@@ -5,7 +5,7 @@ To create an executable using PyInstaller with UPX compression, run the followin
 
 ```bash
 pyinstaller --onefile get_work.py --upx-dir "path\to\upx-4.2.3-win64"
-
+```
 
 The result should look like:
 
