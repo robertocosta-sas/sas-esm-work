@@ -6,14 +6,18 @@ from datetime import datetime
 import traceback
 import time
 
-timeout_time = 5
+timeout_time = 10
+
+def sanitize_input(input_str):
+    """Remove embedded null characters and strip leading/trailing whitespaces."""
+    return input_str.replace('\0', '').strip()
 
 def query_db():
-    user = input("Enter your username (esm): ") or "esm"
-    password = getpass("Enter your password (Orion123): ") or "Orion123"
-    dbname = input("Enter the database name (esm): ") or "esm"
-    host = input("Enter the host (localhost): ") or "localhost"
-    port = input("Enter the port (15432): ") or "15432"
+    user = sanitize_input(input("Enter your username (esm): ") or "esm")
+    password = sanitize_input(getpass("Enter your password (Orion123): ") or "Orion123")
+    dbname = sanitize_input(input("Enter the database name (esm): ") or "esm")
+    host = sanitize_input(input("Enter the host (localhost): ") or "localhost")
+    port = sanitize_input(input("Enter the port (15432): ") or "15432")
     first_time = True
     plt.ion()
     fig_size = None
